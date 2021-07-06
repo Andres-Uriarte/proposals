@@ -1,0 +1,27 @@
+version: '3'
+services:
+    debian-php-apache:
+        build:
+            context: .
+            dockerfile: php-apache
+        ports:
+            - 80:80
+        volumes:
+            - ./:/var/www/html/
+        links:
+            - 'mysql'
+
+    mysql:
+        image: mysql:5.7.33
+        volumes:
+            - mysql:/var/lib/mysql
+        environment:
+            TZ: "Europe/Rome"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "rootpwd"
+            MYSQL_USER: 'testuser'
+            MYSQL_PASSWORD: 'testpassword'
+            MYSQL_DATABASE: 'testdb'
+
+volumes:
+    mysql:
