@@ -1,0 +1,23 @@
+FROM php:7.4.16-apache
+MAINTAINER andres uriarte
+USER root
+RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y apt-transport-https ca-certificates curl software-properties-common build-essential
+RUN apt install -y zlib1g-dev libzip-dev libpng-dev libjpeg-dev libicu-dev libldb-dev libldap2-dev libc-client-dev libkrb5-dev libcurl4-openssl-dev libfreetype6-dev libssl-dev libmagickwand-dev
+RUN docker-php-ext-install zip
+RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
+RUN docker-php-ext-install gd
+RUN docker-php-ext-configure exif --enable-exif
+RUN docker-php-ext-install exif
+RUN docker-php-ext-install intl
+RUN docker-php-ext-install ldap
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
+RUN docker-php-ext-install imap
+RUN docker-php-ext-install json iconv ftp curl
+RUN pecl install imagick
+RUN docker-php-ext-enable imagick
+RUN apt update
+RUN apt upgrade -y
+RUN apt autoremove -y

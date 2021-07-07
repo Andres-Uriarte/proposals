@@ -1,0 +1,14 @@
+{
+    "id": "proposal",
+    "name": "Propuestas",
+    "description": "Módulo para la gestión de propuestas dentro de Humhub",
+    "author": "anduriarte@gmail.com",
+    "title": "Propuestas",
+    "keywords": [
+    ],
+    "version": "1.0",
+    "humhub": {
+        "minVersion": "1.2"
+    },
+    "screenshots": ["assets/screen1.jpg"]
+}
