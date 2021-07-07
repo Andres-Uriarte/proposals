@@ -20,7 +20,7 @@ class Module extends \humhub\components\Module
     */
     public function getConfigUrl(): string
     {
-        return Url::to(['/proposal/admin']);
+        return Url::to(['/proposal/admin/proposals']);
     }
 
     /**
