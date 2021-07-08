@@ -58,9 +58,9 @@ class OrganizationController extends Controller
                 if ($organization->load(Yii::$app->request->post()) && $organization->save()) {
                     return $this->redirect(['/proposal/admin/organizations']);
                 }
-            }
-
-            if ($organization->load(Yii::$app->request->post()) && $organization->save()) {
+            } else if ($organization->load(Yii::$app->request->post())) {
+                $organization->name = $profile->organization_name;
+                $organization->save();
                 return $this->redirect(['/proposal/proposal/index']);
             }
 
